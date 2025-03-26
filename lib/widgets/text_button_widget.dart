@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/core/app_constants.dart';
 
 class TextButtonWidget extends StatelessWidget {
   final String btnTtitle;
   final Function() onPressed;
+  final double? fontSize;
+  final Color? color;
 
-  const TextButtonWidget({super.key, required this.btnTtitle, required this.onPressed});
+  const TextButtonWidget({super.key, required this.btnTtitle, required this.onPressed, this.fontSize, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,8 @@ class TextButtonWidget extends StatelessWidget {
       child: Text(
         btnTtitle,
         style: TextStyle(
-          fontSize: AppConstants.buttonFontSize
+          fontSize: fontSize,
+          color: color
         ),
       )
     );

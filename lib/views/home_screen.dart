@@ -5,6 +5,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Food Delivery App'),
+      ),
+      body: Center(
+        child: TextButton(onPressed: (){
+          Navigator.pushNamed(context, '/login');
+        }, child: Text('Login')),
+      ),
+    );
   }
 }
