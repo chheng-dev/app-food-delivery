@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/core/app_constants.dart';
 import 'package:food_delivery/views/forgot_password_screen.dart';
+import 'package:food_delivery/views/register_screen.dart';
 import 'package:food_delivery/widgets/bg_image_widget.dart';
 import 'package:food_delivery/widgets/button_widget.dart';
 import 'package:food_delivery/widgets/check_box_widget.dart';
@@ -69,10 +70,16 @@ Widget _buildLoginForm(BuildContext context) {
             children: [
               Text("Don't have an account?"),
               SizedBox(width: 6),
-              Text("SIGN UP", style: TextStyle(
-                color: AppConstants.primaryColor,
-                fontWeight: FontWeight.bold
-              ))
+              TextButtonWidget(
+                btnTtitle: "SIGN UP", 
+                color: AppConstants.dangerColor,
+                onPressed:(){
+                  Navigator.pushReplacement(
+                    context, 
+                    MaterialPageRoute(builder: (_) => RegisterScreen()),
+                  );
+                }
+              )
             ],
           ),
           AppConstants.mediumGap,

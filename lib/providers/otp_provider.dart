@@ -57,5 +57,4 @@ class OtpProvider extends ChangeNotifier {
     _timer?.cancel();
     super.dispose();
   }
-
 }
