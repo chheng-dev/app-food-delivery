@@ -3,10 +3,16 @@ import 'package:food_delivery/core/app_constants.dart';
 import 'package:food_delivery/widgets/arrow_icon_back.dart';
 import 'package:food_delivery/widgets/bg_image_widget.dart';
 import 'package:food_delivery/widgets/header_title_widget.dart';
+import 'package:food_delivery/widgets/otp_code_input_widget.dart';
 
-class VerificationCodeScreen extends StatelessWidget {
+class VerificationCodeScreen extends StatefulWidget {
   const VerificationCodeScreen({super.key});
 
+  @override
+  State<VerificationCodeScreen> createState() => _VerificationCodeScreenState();
+}
+
+class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +46,11 @@ Widget _buildVerificationForm(BuildContext context) {
           topRight: Radius.circular(30),
         ),
       ),
-      child: Text("data"),
+      child: Column(
+        children: [
+          OtpCodeInputWidget(),
+        ],
+      ),
     ),
   );
 }

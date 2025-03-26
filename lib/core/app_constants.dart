@@ -8,6 +8,9 @@ class AppConstants {
   static const Color blackColor = Colors.black;
   static const Color whiteColor = Colors.white;
   static const Color blueColor = Colors.blueAccent;
+  static const Color successColor = Colors.green;
+  static const Color greyColor = Colors.grey;
+  static const Color dangerColor = Colors.red;
 
   static const EdgeInsets screenPadding = EdgeInsets.symmetric(horizontal: 20);
   static const EdgeInsets buttonPadding = EdgeInsets.symmetric(
