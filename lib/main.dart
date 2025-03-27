@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Food Delivery App',
       theme: ThemeData(
-        fontFamily: 'WinkySans',
+        fontFamily: 'Lato',
         primaryColor: AppConstants.primaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity
       ),

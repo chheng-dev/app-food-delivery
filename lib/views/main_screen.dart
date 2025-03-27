@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/category_controller.dart';
 import 'package:food_delivery/core/app_constants.dart';
 import 'package:food_delivery/models/categoy.dart';
+import 'package:food_delivery/views/login_screen.dart';
 import 'package:food_delivery/widgets/outline_input_widget.dart';
 import 'package:food_delivery/widgets/section_header_widget.dart';
 
@@ -26,21 +27,48 @@ class _MainScreenState extends State<MainScreen> {
             children: [
               _buildAppBar(),
               _buildGeetingSection(),
-              AppConstants.mediumGap,
-              OutlineInputWidget(
-                icon: Icons.search_sharp,
-                onChanged: (value) {
-                  print(value);
-                },
-                hintText: 'Search dishes, restaurants',
+              ListView(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                children: [
+                  AppConstants.mediumGap,
+                  OutlineInputWidget(
+                    icon: Icons.search_sharp,
+                    onChanged: (value) {
+                      print(value);
+                    },
+                    hintText: 'Search dishes, restaurants',
+                  ),
+                  AppConstants.mediumGap,
+                  SectionHeaderWidget(
+                    title: "All Categories",
+                    onPressedSeemore: () {},
+                    buttonTitle: "See more",
+                  ),
+                  _buildCategorySection(context),
+                  SectionHeaderWidget(
+                    title: "Open Restaurants",
+                    onPressedSeemore: () {},
+                    buttonTitle: "See more",
+                  ),
+                  AppConstants.smallGap,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.150,
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.all(AppConstants.smallRaduis),
+                        ),
+                      ),
+                      TextButton(onPressed: (){
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginScreen()));
+                      }, child: Text("Login"))
+                    ],
+                  )
+                ],
               ),
-              AppConstants.mediumGap,
-              SectionHeaderWidget(
-                title: "All Categories", 
-                onPressedSeemore: (){}, 
-                buttonTitle: "See more"
-              ),
-              _buildCategorySection(context)
             ],
           ),
         ),
@@ -91,7 +119,7 @@ class _MainScreenState extends State<MainScreen> {
                       category.title,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: AppConstants.heading2
+                        fontSize: AppConstants.heading3
                       ),
                     )
                   ],

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/core/app_constants.dart';
-import 'package:food_delivery/widgets/arrow_icon_back.dart';
-import 'package:food_delivery/widgets/bg_image_widget.dart';
 import 'package:food_delivery/widgets/button_widget.dart';
-import 'package:food_delivery/widgets/header_title_widget.dart';
 import 'package:food_delivery/widgets/passowrd_field_widget.dart';
+import 'package:food_delivery/widgets/socail_button_widget.dart';
 import 'package:food_delivery/widgets/text_form_field_widget.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -30,79 +28,73 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          BgImageWidget(),
-          ArrowIconBack(),
-          HeaderTitleWidget(
-            title: "Register", 
-            subTitle: "Please sign up to get started"
+      backgroundColor: AppConstants.whiteColor,
+      body: SafeArea(
+        child: Padding(
+          padding: AppConstants.screenPadding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Sign Up", style: AppConstants.titleStyle),
+              AppConstants.smallGap,
+               Text(
+                "Sign up with one of the following options.",
+                style: AppConstants.descriptionStyle,
+              ),
+              AppConstants.mediumGap,
+              _buildSocailSection(),
+              _buildRegisterForm(context, _togglePasswordVisibility, obscureText),
+            ],
           ),
-          _buildRegisterForm(context, _togglePasswordVisibility, obscureText),
-        ],
+        ),
       ),
     );
   }
 }
 
+Row _buildSocailSection() {
+  return Row(
+    children: [
+      SocailButtonWidget(title: "Google", icon: Icons.email),
+      SizedBox(width: 16),
+      SocailButtonWidget(title: "Iphone", icon: Icons.apple),
+    ],
+  );
+}
+
 Widget _buildRegisterForm(BuildContext context, VoidCallback _togglePasswordVisibility, bool obscureText){
-  return Positioned(
-    bottom: 0.0,
-    left: 0.0,
-    right: 0.0,
-    child: Container(
-      height: MediaQuery.of(context).size.height * 0.7,
-      padding: AppConstants.screenPadding,
-      decoration: BoxDecoration(
-        color: AppConstants.whiteColor,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
-        ),
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    mainAxisAlignment: MainAxisAlignment.start,
+    children: [
+      AppConstants.mediumGap,
+      TextFormFieldWidget(
+        labelText: "Name",
+        hintText: "Jonh Doe",
+        keyboardType: TextInputType.text,
+        obscureText: false,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          AppConstants.mediumGap,
-          TextFormFieldWidget(
-            labelText: "NAME", 
-            prefixIcon: Icons.person_outline_sharp, 
-            keyboardType: TextInputType.text, 
-            obscureText: false, 
-            hintText: "Jonh Doe"
-          ),
-          TextFormFieldWidget(
-            labelText: "EAMIL",
-            prefixIcon: Icons.email,
-            keyboardType: TextInputType.emailAddress,
-            obscureText: false,
-            hintText: "exaple@gmail.com",
-          ),
-          PassowrdFieldWidget(
-            labelText: "PASSWORD",
-            prefixIcon: Icons.lock,
-            obscureText: obscureText,
-            hintText: "Enter your password", 
-            keyboardType: TextInputType.visiblePassword,
-            onPressed: _togglePasswordVisibility,
-          ),
-           PassowrdFieldWidget(
-            labelText: "RE-TYPE PASSWORD",
-            prefixIcon: Icons.lock,
-            obscureText: obscureText,
-            hintText: "Enter your re-type password",
-            keyboardType: TextInputType.visiblePassword,
-            onPressed: _togglePasswordVisibility,
-          ),
-          AppConstants.mediumGap,
-          ButtonWidget(
-            btnTtitle: "REGISTER", 
-            onPressed: (){}
-          )
-        ]
+      TextFormFieldWidget(
+        labelText: "Email id/ Mobile no",
+        hintText: "example@gmail.com",
+        keyboardType: TextInputType.emailAddress,
+        obscureText: false,
       ),
-    )
+      PasswordFieldWidget(
+        labelText: "Password",
+        obscureText: obscureText,
+        hintText: "Enter your password",
+        keyboardType: TextInputType.visiblePassword,
+        onPressed: _togglePasswordVisibility,
+      ),
+      AppConstants.mediumGap,
+      Text("Your password must be at least 8 characters long and include a mix of letters, numbers, and special characters.", style: AppConstants.descriptionStyle),
+      AppConstants.largeGap,
+      ButtonWidget(
+        btnTtitle: "Next", 
+        onPressed: (){}
+      )
+    ]
   );
 }
 
