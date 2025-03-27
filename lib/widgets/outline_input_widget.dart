@@ -1,0 +1,33 @@
+import 'package:flutter/material.dart';
+import 'package:food_delivery/core/app_constants.dart';
+
+class OutlineInputWidget extends StatelessWidget {
+  final IconData icon;
+  final ValueChanged onChanged;
+  final String hintText;
+
+  const OutlineInputWidget({super.key, required this.icon, required this.onChanged, required this.hintText});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppConstants.secondaryColor,
+        borderRadius: BorderRadius.circular(22),
+      ),
+      child: TextField(
+        onChanged: onChanged,
+        decoration: InputDecoration(
+          prefixIcon: Icon(
+            icon,
+            color: Colors.grey, // Adjust color if needed
+          ),
+          border: InputBorder.none,
+          hintText: hintText,
+          hintStyle: TextStyle(color: Colors.grey),
+          contentPadding: EdgeInsets.symmetric(vertical: 12),
+        ),
+      ),
+    );
+  }
+}

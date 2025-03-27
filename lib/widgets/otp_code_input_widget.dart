@@ -75,7 +75,7 @@ Widget _buildCountdownTimer(BuildContext context){
         ? "You can request a new code"
         : "Resend in ${otpProvider.countdown}sec",
                           style: TextStyle(
-        color: otpProvider.canResend ? AppConstants.greyColor : AppConstants.dangerColor,
+        color: otpProvider.canResend ? AppConstants.secondaryColor : AppConstants.dangerColor,
         ),
       );
     }

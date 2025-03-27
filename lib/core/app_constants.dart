@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 class AppConstants {
   // App Colors
   static const Color primaryColor = Color(0xFFFF7622);
-  static const Color secondaryColor = Colors.grey;
+  static const Color secondaryColor = Color(0xFFE0E0E0);   
   static const Color backgroundColor = Colors.white;
   static const Color blackColor = Colors.black;
   static const Color whiteColor = Colors.white;
   static const Color blueColor = Colors.blueAccent;
   static const Color successColor = Colors.green;
-  static const Color greyColor = Colors.grey;
   static const Color dangerColor = Colors.red;
+  static const Color greyColor = Colors.grey;
+  static const Color orangeColor = Color(0xFFFFD37A);
 
   static const EdgeInsets screenPadding = EdgeInsets.symmetric(horizontal: 20);
   static const EdgeInsets buttonPadding = EdgeInsets.symmetric(
@@ -36,14 +37,18 @@ class AppConstants {
 
   // Font Sizes
   static const double titleFontSize = 24;
+  static const double heading1 = 18;
+  static const double heading2 = 16;
   static const double descriptionFontSize = 14;
   static const double buttonFontSize = 18;
 
+  static const double smallRaduis = 8.0;
+
   // Text Styles
   static const TextStyle titleStyle = TextStyle(
-    fontSize: titleFontSize,
-    fontWeight: FontWeight.bold,
-    color: primaryColor,
+    fontSize: heading1,
+    fontWeight: FontWeight.w500,
+    // color: primaryColor,
   );
 
   static const TextStyle descriptionStyle = TextStyle(

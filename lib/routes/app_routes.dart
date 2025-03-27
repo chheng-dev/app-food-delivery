@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/views/forgot_password_screen.dart';
 import 'package:food_delivery/views/home_screen.dart';
 import 'package:food_delivery/views/login_screen.dart';
+import 'package:food_delivery/views/main_screen.dart';
 import 'package:food_delivery/views/register_screen.dart';
 import 'package:food_delivery/views/splash_screen.dart';
 
 class AppRoutes {
   static const String splash = '/';
+  static const String main = "/main";
   static const String home = '/home';
   static const String login = '/login';
   static const String register = '/register';
@@ -16,6 +18,8 @@ class AppRoutes {
     switch (settings.name) {
       case splash:
         return MaterialPageRoute(builder: (_) => SplashScreen());
+      case main:
+        return MaterialPageRoute(builder: (_) => MainScreen());
       case home:
         return MaterialPageRoute(builder: (_) => HomeScreen());
       case login:

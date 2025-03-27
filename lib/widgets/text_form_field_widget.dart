@@ -19,7 +19,7 @@ class TextFormFieldWidget extends StatelessWidget {
           labelText: labelText,
           hintText: hintText,
           hintStyle: TextStyle(
-            color: AppConstants.greyColor, // Change the color here
+            color: AppConstants.secondaryColor, // Change the color here
           ),
           prefixIcon: Icon(
             prefixIcon,
