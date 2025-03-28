@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/core/app_constants.dart';
 import 'package:food_delivery/widgets/banner_widget.dart';
+import 'package:food_delivery/widgets/card_items_widget.dart';
 import 'package:food_delivery/widgets/header_title_widget.dart';
 import 'package:food_delivery/widgets/outline_input_widget.dart';
 
@@ -29,7 +30,18 @@ class HomeScreen extends StatelessWidget {
               AppConstants.mediumGap,
               BannerSliderWidget(),
               AppConstants.mediumGap,
-              HeaderTitleWidget(title: "Shop by category")
+              HeaderTitleWidget(title: "Shop by category"),
+              Row(
+                children: [
+                  Expanded(
+                    child: CardItemsWidget()
+                  ),
+                  SizedBox(width: 16.0),
+                  Expanded(
+                    child: CardItemsWidget()
+                  ),
+                ],
+              )
             ],
           ),
         ),
