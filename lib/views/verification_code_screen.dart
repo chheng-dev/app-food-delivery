@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/core/app_constants.dart';
 import 'package:food_delivery/widgets/arrow_icon_back.dart';
-import 'package:food_delivery/widgets/bg_image_widget.dart';
-import 'package:food_delivery/widgets/header_title_widget.dart';
 import 'package:food_delivery/widgets/otp_code_input_widget.dart';
 
 class VerificationCodeScreen extends StatefulWidget {
@@ -15,19 +13,6 @@ class VerificationCodeScreen extends StatefulWidget {
 class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
   @override
   Widget build(BuildContext context) {
-    // return Scaffold(
-    //   body: Stack(
-    //     children: [
-    //       BgImageWidget(),
-    //       ArrowIconBack(),
-    //       HeaderTitleWidget(
-    //         title: "Verification", 
-    //         subTitle: "We have sent a code to your email"
-    //       ),
-    //       _buildVerificationForm(context),
-    //     ],
-    //   ),
-    // );
     return Scaffold(
       backgroundColor: AppConstants.whiteColor,
       appBar: AppBar(

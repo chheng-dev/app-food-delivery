@@ -12,6 +12,7 @@ class AppConstants {
   static const Color dangerColor = Colors.red;
   static const Color greyColor = Colors.grey;
   static const Color orangeColor = Color(0xFFFFD37A);
+  static const Color brownColor = Color(0xFF332B3A);
 
   static const EdgeInsets screenPadding = EdgeInsets.symmetric(horizontal: 20);
   static const EdgeInsets buttonPadding = EdgeInsets.symmetric(
@@ -36,7 +37,7 @@ class AppConstants {
   static const SizedBox largeGap = SizedBox(height: 40);
 
   // Font Sizes
-  static const double titleFontSize = 24;
+  static const double titleFontSize = 22;
   static const double heading1 = 18;
   static const double heading2 = 16;
   static const double heading3 = 14;
