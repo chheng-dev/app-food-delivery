@@ -19,12 +19,7 @@ class _OtpCodeInputWidgetState extends State<OtpCodeInputWidget> {
     final otpProvider  = Provider.of<OtpProvider>(context, listen: false);
 
     return Column(
-      children: [
-        AppConstants.mediumGap,
-        const Text(
-          "Enter the 6-digit verification code",
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-        ),
+      children: [        
         AppConstants.mediumGap,
         OTPTextField(
           contentPadding: EdgeInsets.zero,
@@ -37,14 +32,14 @@ class _OtpCodeInputWidgetState extends State<OtpCodeInputWidget> {
           onChanged: otpProvider.updateOtp,
           onCompleted: otpProvider.updateOtp,
         ), 
-        AppConstants.smallGap,   
+        AppConstants.mediumGap,   
+        ButtonWidget(
+          btnTtitle: "Verify", 
+          onPressed: otpProvider.verfifyCode,
+        ),
+        AppConstants.smallGap,
         _buildCountdownTimer(context),
         _buildResendCode(context),
-        AppConstants.smallGap,
-        ButtonWidget(
-          btnTtitle: "VERIFY", 
-          onPressed: otpProvider.verfifyCode,
-        )
       ],
     );
   }
@@ -75,7 +70,7 @@ Widget _buildCountdownTimer(BuildContext context){
         ? "You can request a new code"
         : "Resend in ${otpProvider.countdown}sec",
                           style: TextStyle(
-        color: otpProvider.canResend ? AppConstants.greyColor : AppConstants.dangerColor,
+        color: otpProvider.canResend ? AppConstants.secondaryColor : AppConstants.dangerColor,
         ),
       );
     }

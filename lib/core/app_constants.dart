@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 
 class AppConstants {
   // App Colors
-  static const Color primaryColor = Color(0xFFFF7622);
-  static const Color secondaryColor = Colors.grey;
+  static const Color primaryColor = Color(0xFF8E3BF4);
+  static const Color secondaryColor = Color(0xFFF5F5F5);  
   static const Color backgroundColor = Colors.white;
   static const Color blackColor = Colors.black;
   static const Color whiteColor = Colors.white;
   static const Color blueColor = Colors.blueAccent;
   static const Color successColor = Colors.green;
-  static const Color greyColor = Colors.grey;
   static const Color dangerColor = Colors.red;
+  static const Color greyColor = Colors.grey;
+  static const Color orangeColor = Color(0xFFFFD37A);
+  static const Color brownColor = Color(0xFF332B3A);
 
   static const EdgeInsets screenPadding = EdgeInsets.symmetric(horizontal: 20);
   static const EdgeInsets buttonPadding = EdgeInsets.symmetric(
@@ -35,20 +37,31 @@ class AppConstants {
   static const SizedBox largeGap = SizedBox(height: 40);
 
   // Font Sizes
-  static const double titleFontSize = 24;
+  static const double titleFontSize = 22;
+  static const double heading1 = 18;
+  static const double heading2 = 16;
+  static const double heading3 = 14;
   static const double descriptionFontSize = 14;
   static const double buttonFontSize = 18;
+
+  static const Radius smallRaduis = Radius.circular(8);
 
   // Text Styles
   static const TextStyle titleStyle = TextStyle(
     fontSize: titleFontSize,
-    fontWeight: FontWeight.bold,
-    color: primaryColor,
+    fontWeight: FontWeight.w700,
+    fontFamily: "Lato"
+  );
+
+  static const TextStyle title2Style = TextStyle(
+    fontSize: heading3,
+    fontWeight: FontWeight.w700,
+    fontFamily: "Lato",
   );
 
   static const TextStyle descriptionStyle = TextStyle(
     fontSize: descriptionFontSize,
-    color: secondaryColor,
+    color: greyColor,
   );
 
   static const TextStyle buttonTextStyle = TextStyle(
