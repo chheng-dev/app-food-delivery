@@ -3,7 +3,6 @@ import 'package:food_delivery/controllers/splash_controller.dart';
 import 'package:food_delivery/core/app_constants.dart';
 import 'package:food_delivery/models/slide_model.dart';
 import 'package:food_delivery/views/main_screen.dart';
-import 'package:food_delivery/widgets/button_widget.dart';
 import 'package:food_delivery/widgets/slide_widget.dart';
 import 'package:food_delivery/widgets/text_button_widget.dart';
 import 'package:provider/provider.dart';
@@ -64,22 +63,22 @@ class SplashScreen extends StatelessWidget {
                     ),
                   ),
                   AppConstants.largeGap,
-                  ButtonWidget(
-                    btnTtitle: "NEXT", 
-                    onPressed: (){
-                      if(controller.currentIndex == slideList.length - 1){
-                         Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (_) => MainScreen()),
-                        );
-                      } else {
-                        controller.pageController.nextPage(
-                          duration: Duration(milliseconds: 300), 
-                          curve: Curves.easeIn
-                        );
-                      }
-                    }
-                  ),
+                  // ButtonWidget(
+                  //   btnTtitle: "NEXT", 
+                  //   onPressed: (){
+                  //     if(controller.currentIndex == slideList.length - 1){
+                  //        Navigator.pushReplacement(
+                  //         context,
+                  //         MaterialPageRoute(builder: (_) => MainScreen()),
+                  //       );
+                  //     } else {
+                  //       controller.pageController.nextPage(
+                  //         duration: Duration(milliseconds: 300), 
+                  //         curve: Curves.easeIn
+                  //       );
+                  //     }
+                  //   }
+                  // ),
                   AppConstants.smallGap,
                   TextButtonWidget(
                     btnTtitle: "Skip", 

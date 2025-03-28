@@ -60,7 +60,10 @@ class TrendingItemWidget extends StatelessWidget {
 
     return Wrap(
       children: [
-        HeaderTitleWidget(title: "Trending items"),
+        HeaderTitleWidget(
+          title: "Trending items",
+          btnTitle: 'See all',
+        ),
         TrendingItemsCarousel(trendingItems: trendingItems),
       ],
     );

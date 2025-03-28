@@ -43,7 +43,7 @@ class AppConstants {
   static const double heading3 = 14;
   static const double heading4 = 12;
   static const double descriptionFontSize = 14;
-  static const double buttonFontSize = 18;
+  static const double buttonFontSize = 16;
 
   static const Radius smallRaduis = Radius.circular(8);
 
