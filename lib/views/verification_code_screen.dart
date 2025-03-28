@@ -17,7 +17,11 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
       backgroundColor: AppConstants.whiteColor,
       appBar: AppBar(
         backgroundColor: AppConstants.whiteColor,
-        leading: ArrowIconBack(),
+        leading: ArrowIconBack(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: SafeArea(
         child: Padding(
