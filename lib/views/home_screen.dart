@@ -3,6 +3,7 @@ import 'package:food_delivery/core/app_constants.dart';
 import 'package:food_delivery/widgets/banner_widget.dart';
 import 'package:food_delivery/widgets/card_items_widget.dart';
 import 'package:food_delivery/widgets/header_title_widget.dart';
+import 'package:food_delivery/widgets/home/trending_item_widget.dart';
 import 'package:food_delivery/widgets/outline_input_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -19,33 +20,48 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildAppBar(),
-              OutlineInputWidget(
-                icon: Icons.search_sharp,
-                suffixIcon: Icons.mic_rounded,
-                onChanged: (value) {
-                  print(value);
-                },
-                hintText: 'Search dishes, restaurants',
-              ),
-              AppConstants.mediumGap,
-              BannerSliderWidget(),
-              AppConstants.mediumGap,
-              HeaderTitleWidget(title: "Shop by category"),
-              Row(
-                children: [
-                  Expanded(
-                    child: CardItemsWidget()
+              Container(
+                height: MediaQuery.of(context).size.height * 0.75,
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      OutlineInputWidget(
+                        icon: Icons.search_sharp,
+                        suffixIcon: Icons.mic_rounded,
+                        onChanged: (value) {
+                          print(value);
+                        },
+                        hintText: 'Search dishes, restaurants',
+                      ),
+                      AppConstants.mediumGap,
+                      BannerSliderWidget(),
+                      AppConstants.mediumGap,
+                      _buildShopByCategory(),
+                      TrendingItemWidget(),
+                    ],
                   ),
-                  SizedBox(width: 16.0),
-                  Expanded(
-                    child: CardItemsWidget()
-                  ),
-                ],
+                ),
               )
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Wrap _buildShopByCategory() {
+    return Wrap(
+      children: [
+        HeaderTitleWidget(title: "Shop by category"),
+        Row(
+          children: [
+            Expanded(child: CardItemsWidget()),
+            SizedBox(width: 16.0),
+            Expanded(child: CardItemsWidget()),
+          ],
+        )
+      ],
     );
   }
 
@@ -79,3 +95,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
