@@ -41,6 +41,7 @@ class AppConstants {
   static const double heading1 = 18;
   static const double heading2 = 16;
   static const double heading3 = 14;
+  static const double heading4 = 12;
   static const double descriptionFontSize = 14;
   static const double buttonFontSize = 18;
 
