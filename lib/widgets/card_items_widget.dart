@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/core/app_constants.dart';
+import 'package:food_delivery/views/item_detail_screen.dart';
 
 class CardItemsWidget extends StatelessWidget {
   const CardItemsWidget({super.key});
@@ -16,12 +17,20 @@ class CardItemsWidget extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildImage(context),
-              _buildSectionTitle(),
-            ],
+          GestureDetector(
+            onTap: (){
+              Navigator.pushReplacement(
+                context, 
+                MaterialPageRoute(builder: (_) => ItemDetailScreen())
+              );
+            },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildImage(context),
+                _buildSectionTitle(),
+              ],
+            ),
           ),
           _buildDiscountSection(),
           _buildFavoriteIcon()
