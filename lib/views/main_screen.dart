@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/core/app_constants.dart';
 import 'package:food_delivery/views/home_screen.dart';
+import 'package:food_delivery/views/my_cart_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -14,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _pages = [
     HomeScreen(),
     Center(child: Text('Grid Page')),
-    Center(child: Text('Cart Page')),
+    MyCartScreen(),
     Center(child: Text('People Page')),
   ];
 
@@ -24,6 +26,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: AppConstants.whiteColor,
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false, 
         showUnselectedLabels: false, 
