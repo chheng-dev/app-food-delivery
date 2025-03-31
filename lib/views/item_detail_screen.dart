@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/core/app_constants.dart';
+import 'package:food_delivery/views/home_screen.dart';
 import 'package:food_delivery/widgets/arrow_icon_back.dart'; // Ensure this file exists and contains the ArrowIconBack widget
 import 'package:food_delivery/widgets/button_widget.dart';
 import 'package:food_delivery/widgets/outlined_button_widget.dart';
@@ -135,7 +136,12 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
     return AppBar(
       backgroundColor: AppConstants.whiteColor,
       leading: ArrowIconBack(
-        onPressed: () => Navigator.of(context).pop(),
+        onPressed: () {
+          Navigator.pushReplacement(
+            context, 
+            MaterialPageRoute(builder: (_) => HomeScreen())
+          );
+        },
       ),
       actions: [
         IconButton(
@@ -150,15 +156,21 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
 
   Row _buildSectionButton() {
     return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        OutlinedButtonWidget(
-          title: 'Add to wishlist',
-          onPressed: () {},
+        Expanded(
+          child: OutlinedButtonWidget(
+            title: 'Add to wishlist',
+            onPressed: () {},
+          ),
         ),
         SizedBox(width: 8.0),
-        ButtonWidget(
-          btnTtitle: "Add to cart",
-          onPressed: () {},
+        Expanded(
+          child: ButtonWidget(
+            btnTtitle: "Add to cart",
+            onPressed: () {},
+          ),
         ),
       ],
     );

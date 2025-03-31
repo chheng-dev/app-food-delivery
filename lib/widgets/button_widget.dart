@@ -9,24 +9,22 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        width: double.infinity,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: AppConstants.primaryColor,
-            foregroundColor: Colors.white,
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            elevation: 0,
-          ),
-          onPressed: onPressed,
-          child: Text(
-            btnTtitle,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: AppConstants.buttonFontSize,
-            ),
+    return Container(
+      width: double.infinity,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppConstants.primaryColor,
+          foregroundColor: Colors.white,
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          elevation: 0,
+        ),
+        onPressed: onPressed,
+        child: Text(
+          btnTtitle,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: AppConstants.buttonFontSize,
           ),
         ),
       ),
