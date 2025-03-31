@@ -65,7 +65,7 @@ class SplashScreen extends StatelessWidget {
                   ),
                   AppConstants.largeGap,
                   ButtonWidget(
-                    btnTtitle: "NEXT", 
+                    btnTtitle: "Next", 
                     onPressed: (){
                       if(controller.currentIndex == slideList.length - 1){
                          Navigator.pushReplacement(

@@ -4,13 +4,14 @@ import 'package:food_delivery/core/app_constants.dart';
 class ButtonWidget extends StatelessWidget {
   final String btnTtitle;
   final Function() onPressed;
+  final bool? fullWidth;
 
-  const ButtonWidget({super.key, required this.btnTtitle, required this.onPressed});
+  const ButtonWidget({super.key, required this.btnTtitle, required this.onPressed, this.fullWidth = true});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      width: fullWidth! ? double.infinity : null,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppConstants.primaryColor,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/core/app_constants.dart';
+import 'package:food_delivery/views/order_screen.dart';
 import 'package:food_delivery/widgets/button_widget.dart';
 import 'package:food_delivery/widgets/cart/cart_item_wdiget.dart';
 import 'package:food_delivery/widgets/header_title_widget.dart';
@@ -117,7 +118,12 @@ class _MyCartScreenState extends State<MyCartScreen>
                           padding: EdgeInsets.symmetric(vertical: AppConstants.margin1),
                           child: ButtonWidget(
                             btnTtitle: "Proccess to buy 2 items", 
-                            onPressed: (){}
+                            onPressed: (){
+                              Navigator.pushReplacement(
+                                context, 
+                                MaterialPageRoute(builder: (_) => OrderScreen())
+                              );
+                            }
                           ),
                         )
                       ],
