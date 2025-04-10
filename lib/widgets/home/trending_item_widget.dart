@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/widgets/header_title_widget.dart';
 import 'package:food_delivery/widgets/home/trending_slider_widget.dart';
 
 class TrendingItemWidget extends StatelessWidget {
@@ -12,7 +11,7 @@ class TrendingItemWidget extends StatelessWidget {
         "title": "Get winter ready",
         "description": "We help you to grow your",
         "image":
-            "https://static.vecteezy.com/system/resources/previews/047/394/332/non_2x/little-happy-child-kid-girl-in-casual-clothes-dancing-joyfully-isolated-on-a-transparent-background-free-png.png",
+            "https://jthemes.net/themes/f-html/baby-store/assets/img/product/cat-7.png",
         "price": "80.00",
         "originalPrice": "99.00",
       },
@@ -20,7 +19,7 @@ class TrendingItemWidget extends StatelessWidget {
         "title": "Summer Collection",
         "description": "Stay cool in the summer heat",
         "image":
-            "https://static.vecteezy.com/system/resources/previews/047/394/332/non_2x/little-happy-child-kid-girl-in-casual-clothes-dancing-joyfully-isolated-on-a-transparent-background-free-png.png",
+            "https://uneno.madrasthemes.com/wp-content/uploads/2018/12/login-image-min.png",
         "price": "50.00",
         "originalPrice": "60.00",
       },
@@ -28,7 +27,7 @@ class TrendingItemWidget extends StatelessWidget {
         "title": "New Fashion Trends",
         "description": "Trendy outfits for all seasons",
         "image":
-            "https://static.vecteezy.com/system/resources/previews/047/394/332/non_2x/little-happy-child-kid-girl-in-casual-clothes-dancing-joyfully-isolated-on-a-transparent-background-free-png.png",
+            "https://uneno.madrasthemes.com/wp-content/uploads/2018/10/uneno-product-400x439.jpg",
         "price": "75.00",
         "originalPrice": "90.00",
       },
@@ -60,10 +59,6 @@ class TrendingItemWidget extends StatelessWidget {
 
     return Wrap(
       children: [
-        HeaderTitleWidget(
-          title: "Trending items",
-          btnTitle: 'See all',
-        ),
         TrendingItemsCarousel(trendingItems: trendingItems),
       ],
     );

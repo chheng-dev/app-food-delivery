@@ -95,9 +95,9 @@ Widget _buildLoginForm(BuildContext context, VoidCallback _togglePasswordVisibil
         child: TextButtonWidget(
           btnTtitle: "Forgot password", 
           onPressed: (){
-             Navigator.pushReplacement(
+            Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => ForgotPasswordScreen()),
+              MaterialPageRoute(builder: (context) => ForgotPasswordScreen()),
             );
           },
           color: AppConstants.primaryColor,
@@ -112,12 +112,12 @@ Widget _buildLoginForm(BuildContext context, VoidCallback _togglePasswordVisibil
           Text("Don't have an account?"),
           SizedBox(width: 6),
           TextButtonWidget(
-            btnTtitle: "SIGN UP", 
+            btnTtitle: "Sign up", 
             color: AppConstants.primaryColor,
             onPressed:(){
-              Navigator.pushReplacement(
-                context, 
-                MaterialPageRoute(builder: (_) => RegisterScreen()),
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RegisterScreen()),
               );
             }
           )

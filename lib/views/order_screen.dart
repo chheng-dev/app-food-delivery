@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/core/app_constants.dart';
-import 'package:food_delivery/views/my_cart_screen.dart';
+import 'package:food_delivery/views/checkout_screen.dart';
 import 'package:food_delivery/widgets/arrow_icon_back.dart';
 import 'package:food_delivery/widgets/button_widget.dart';
 import 'package:food_delivery/widgets/cart/cart_item_wdiget.dart';
@@ -33,7 +33,7 @@ class OrderScreen extends StatelessWidget {
                 ],
               ),
               Spacer(),
-              _buildTotalButton(),
+              _buildTotalButton(context),
             ],
           ),
         ),
@@ -41,7 +41,7 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  Row _buildTotalButton() {
+  Row _buildTotalButton(BuildContext context) {
     return Row(
       children: [
         Text(
@@ -60,18 +60,24 @@ class OrderScreen extends StatelessWidget {
           child: ButtonWidget(
             fullWidth: false,
             btnTtitle: "Checkout", 
-            onPressed: (){}
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CheckoutScreen()),
+              );
+            }
           ),
         )
       ],
     );
   }
 
-  AppBar _buildAppBar(BuildContext context) {
+  AppBar _buildAppBar(context) {
     return AppBar(
       backgroundColor: AppConstants.whiteColor,
-      leading: ArrowIconBack(onPressed: (){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => MyCartScreen()));
+      leading: ArrowIconBack(
+        onPressed: (){
+        Navigator.pop(context);
       }),
       centerTitle: false,
       title: Text("Order Summary"),

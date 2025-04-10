@@ -55,9 +55,9 @@ Widget _buildRegisterForm(BuildContext context) {
       ButtonWidget(
         btnTtitle: "Send", 
         onPressed: () {
-          Navigator.pushReplacement(
-            context, 
-            MaterialPageRoute(builder: (_) => VerificationCodeScreen()),
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => VerificationCodeScreen()),
           );
         }
       ),

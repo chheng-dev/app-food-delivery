@@ -4,30 +4,37 @@ import 'package:food_delivery/widgets/home/trending_item_card.dart';
 
 class TrendingItemsCarousel extends StatelessWidget {
   final List<Map<String, String>> trendingItems;
+
   const TrendingItemsCarousel({super.key, required this.trendingItems});
 
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-      items: trendingItems.map((item) {
-        return TrendingItemCard(
-          title: item["title"]!,
-          description: item["description"]!,
-          imageUrl: item["image"]!,
-          price: item["price"]!, // This can be dynamic
-          originalPrice: item["originalPrice"]!, // This can be dynamic
-        );
-      }).toList(),
-      options: CarouselOptions(
-        height: MediaQuery.of(context).size.height * 0.14,
-        viewportFraction: 0.9,
-        aspectRatio: 2.0,
-        initialPage: 0,
-        enlargeCenterPage: false,
-        enableInfiniteScroll: true,
-        autoPlay: false,
-        autoPlayAnimationDuration: Duration(milliseconds: 800),
-        autoPlayCurve: Curves.fastOutSlowIn,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: CarouselSlider.builder(
+        itemCount: trendingItems.length,
+        itemBuilder: (context, index, realIndex) {
+          final item = trendingItems[index];
+          return TrendingItemCard(
+            title: item["title"] ?? "",
+            description: item["description"] ?? "",
+            imageUrl: item["image"] ?? "",
+            price: item["price"] ?? "0",
+            originalPrice: item["originalPrice"] ?? "0",
+          );
+        },
+        options: CarouselOptions(
+          height: MediaQuery.of(context).size.height * 0.45,
+          viewportFraction: 0.65,
+          aspectRatio: 16 / 9,
+          initialPage: 0,
+          enlargeCenterPage: true,
+          enableInfiniteScroll: true,
+          autoPlay: false,
+          autoPlayAnimationDuration: const Duration(milliseconds: 800),
+          autoPlayCurve: Curves.fastOutSlowIn,
+          scrollPhysics: const BouncingScrollPhysics(),
+        ),
       ),
     );
   }

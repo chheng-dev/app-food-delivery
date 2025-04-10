@@ -13,10 +13,20 @@ class HeaderTitleWidget extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppConstants.titleStyle,
+          style: AppConstants.titleStyle.copyWith(
+            fontWeight: FontWeight.w500
+          ),
         ),
         if(btnTitle != null)
-          TextButton(onPressed: () {}, child: Text(btnTitle!))
+          TextButton(
+            onPressed: () {}, 
+            child: Text(
+              btnTitle!,
+              style: TextStyle(
+                color: AppConstants.greyColor
+              ),
+            )
+          )
       ],
     );
   }

@@ -50,59 +50,90 @@ class ShippingAddressWidget extends StatelessWidget {
     );
   }
   
-  Future<void> _editingShippingAddressModal(BuildContext context){
-    return showModalBottomSheet(
-      context: context, 
-      builder: (context) {
-        return Container(
-          width: double.infinity,
-          padding: EdgeInsets.all(
-            AppConstants.margin3
+  Future<void> _editingShippingAddressModal(BuildContext context) async {
+  return showModalBottomSheet(
+    isScrollControlled: true,
+    context: context,
+    builder: (context) {
+      return SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding( 
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom, 
           ),
-          decoration: BoxDecoration(
-            color: AppConstants.whiteColor
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Stack(
             children: [
-              Text(
-                "Shipping Address",
-                style: AppConstants.titleStyle,
+              Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.6,
+                padding: EdgeInsets.all(AppConstants.margin3),
+                margin: EdgeInsets.only(bottom: AppConstants.margin4),
+                decoration: BoxDecoration(color: AppConstants.whiteColor),
+                child: SingleChildScrollView( 
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Shipping Address",
+                        style: AppConstants.titleStyle,
+                      ),
+                      AppConstants.mediumGap, 
+                      TextFormFieldWidget(
+                        labelText: "Country",
+                        hintText: "",
+                        keyboardType: TextInputType.text,
+                        obscureText: false,
+                      ),
+                      AppConstants.mediumGap,
+                      TextFormFieldWidget(
+                        labelText: "Address",
+                        hintText: "",
+                        keyboardType: TextInputType.streetAddress,
+                        obscureText: false,
+                      ),
+                      AppConstants.mediumGap,
+                      TextFormFieldWidget(
+                        labelText: "Town/City",
+                        hintText: "",
+                        keyboardType: TextInputType.text,
+                        obscureText: false,
+                      ),
+                      AppConstants.mediumGap,
+                      TextFormFieldWidget(
+                        labelText: "Postcode",
+                        hintText: "",
+                        keyboardType: TextInputType.number,
+                        obscureText: false,
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              TextFormFieldWidget(
-                labelText: "Country", 
-                hintText: "", 
-                keyboardType: TextInputType.text, 
-                obscureText: false
-              ),
-              TextFormFieldWidget(
-                labelText: "Address",
-                hintText: "",
-                keyboardType: TextInputType.streetAddress,
-                obscureText: false,
-              ),
-              TextFormFieldWidget(
-                labelText: "Town/City",
-                hintText: "",
-                keyboardType: TextInputType.text,
-                obscureText: false,
-              ),
-              TextFormFieldWidget(
-                labelText: "Postcode",
-                hintText: "",
-                keyboardType: TextInputType.number,
-                obscureText: false,
-              ),
-              Spacer(),
-              ButtonWidget(
-                btnTtitle: "Save Changes", 
-                onPressed: (){}
-              ),
-              AppConstants.mediumGap,
+              Positioned(
+                bottom: 20,
+                left: 0,
+                right: 0,
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: AppConstants.margin2
+                  ),
+                  margin: EdgeInsets.symmetric(
+                    vertical: AppConstants.margin2
+                  ),
+                  child: ButtonWidget(
+                    btnTtitle: "Save Changes",
+                    onPressed: () {
+                      Navigator.pop(context); 
+                    },
+                  ),
+                ),
+              )
             ],
           ),
-        );
-      }
-    );
-  }
+        ),
+      );
+    },
+  );
+}
+
 }

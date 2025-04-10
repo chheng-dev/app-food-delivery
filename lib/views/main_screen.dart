@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/core/app_constants.dart';
+import 'package:food_delivery/views/discover_screen.dart';
 import 'package:food_delivery/views/home_screen.dart';
 import 'package:food_delivery/views/my_cart_screen.dart';
 
@@ -15,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _pages = [
     HomeScreen(),
-    Center(child: Text('Grid Page')),
+    DiscoverScreen(),
     MyCartScreen(),
     Center(child: Text('People Page')),
   ];
@@ -28,6 +29,8 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: AppConstants.whiteColor,
         type: BottomNavigationBarType.fixed,
+        selectedItemColor: AppConstants.brownColor,
+        unselectedItemColor: AppConstants.greyColor,
         showSelectedLabels: false, 
         showUnselectedLabels: false, 
         currentIndex: _currentIndex,
@@ -42,7 +45,7 @@ class _MainScreenState extends State<MainScreen> {
             label: "Home"
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.grid_view_sharp),
+            icon: Icon(Icons.search),
             label: "Grid"
           ),
           BottomNavigationBarItem(

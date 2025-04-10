@@ -119,9 +119,11 @@ class _MyCartScreenState extends State<MyCartScreen>
                           child: ButtonWidget(
                             btnTtitle: "Proccess to buy 2 items", 
                             onPressed: (){
-                              Navigator.pushReplacement(
-                                context, 
-                                MaterialPageRoute(builder: (_) => OrderScreen())
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => OrderScreen(),
+                                ),
                               );
                             }
                           ),

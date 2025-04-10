@@ -8,75 +8,89 @@ class TrendingItemCard extends StatelessWidget {
   final String price;
   final String originalPrice;
 
-  const TrendingItemCard({super.key, required this.title, required this.description, required this.imageUrl, required this.price, required this.originalPrice});
+  const TrendingItemCard({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.imageUrl,
+    required this.price,
+    required this.originalPrice,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        top: AppConstants.margin1,
-        bottom: AppConstants.margin1,
-        right: AppConstants.margin1,
-      ),
+      margin: const EdgeInsets.symmetric(horizontal: 8.0),
       decoration: BoxDecoration(
-        color: AppConstants.secondaryColor,
-        borderRadius: BorderRadius.all(AppConstants.smallRaduis),
+        color: AppConstants.whiteColor,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 8,
+            offset: Offset(0, 4),
+          ),
+        ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            _buildSectionImage(imageUrl),
-            SizedBox(width: 8.0),
-            Column(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildSectionImage(imageUrl, context),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
                   style: AppConstants.title2Style,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
+                const SizedBox(height: 4),
                 Text(
-                  description,
+                  "\$$price",
                   style: TextStyle(
-                    fontSize: AppConstants.heading4,
-                    color: AppConstants.greyColor
+                    fontSize: AppConstants.heading2,
+                    fontWeight: FontWeight.bold,
+                    color: AppConstants.primaryColor,
                   ),
                 ),
-                Spacer(),
-                Row(
-                  children: [
-                    Text(
-                      "\$${price}",
-                      style: TextStyle(
-                        fontSize: AppConstants.heading1,
-                        fontWeight: FontWeight.w700,
-                      ),
+                if (originalPrice.isNotEmpty && originalPrice != price)
+                  Text(
+                    "\$$originalPrice",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      decoration: TextDecoration.lineThrough,
                     ),
-                    SizedBox(width: 8.0),
-                    Text(
-                      "\$${originalPrice}",
-                      style: TextStyle(
-                        color: AppConstants.greyColor,
-                        decoration: TextDecoration.lineThrough,
-                        decorationColor: AppConstants.greyColor,
-                      ),
-                    )
-                  ],
-                )
+                  ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
-  ClipRRect _buildSectionImage(String imageUrl) {
+  Widget _buildSectionImage(String imageUrl, BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.all(
-        AppConstants.smallRaduis
+      borderRadius: BorderRadius.vertical(top: AppConstants.smallRaduis),
+      child: Image.network(
+        imageUrl,
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height * 0.22,
+        fit: BoxFit.cover,
+        errorBuilder:
+            (context, error, stackTrace) => Container(
+              color: Colors.grey[300],
+              height: MediaQuery.of(context).size.height * 0.22,
+              child: const Icon(
+                Icons.broken_image,
+                size: 50,
+                color: Colors.grey,
+              ),
+            ),
       ),
-      child: Image.network(imageUrl)
     );
   }
 }

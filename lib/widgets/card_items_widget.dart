@@ -19,9 +19,9 @@ class CardItemsWidget extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: (){
-              Navigator.pushReplacement(
-                context, 
-                MaterialPageRoute(builder: (_) => ItemDetailScreen())
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ItemDetailScreen()),
               );
             },
             child: Column(

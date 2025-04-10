@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/core/app_constants.dart';
-import 'package:food_delivery/views/home_screen.dart';
-import 'package:food_delivery/widgets/arrow_icon_back.dart'; // Ensure this file exists and contains the ArrowIconBack widget
+import 'package:food_delivery/widgets/arrow_icon_back.dart'; 
 import 'package:food_delivery/widgets/button_widget.dart';
 import 'package:food_delivery/widgets/outlined_button_widget.dart';
 
@@ -27,7 +26,7 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppConstants.whiteColor,
-      appBar: _buildAppBar(),
+      appBar: _buildAppBar(context),
       body: SafeArea(
         child: Padding(
           padding: AppConstants.screenPadding,
@@ -132,23 +131,16 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
     );
   }
 
-  AppBar _buildAppBar() {
+  AppBar _buildAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: AppConstants.whiteColor,
       leading: ArrowIconBack(
         onPressed: () {
-          Navigator.pushReplacement(
-            context, 
-            MaterialPageRoute(builder: (_) => HomeScreen())
-          );
+          Navigator.of(context).pop();
         },
       ),
       actions: [
-        IconButton(
-          onPressed: () {
-          },
-          icon: Icon(Icons.share),
-        ),
+        IconButton(onPressed: () {}, icon: Icon(Icons.share)),
         IconButton(onPressed: () {}, icon: Icon(Icons.favorite)),
       ],
     );

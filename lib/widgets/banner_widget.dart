@@ -16,27 +16,20 @@ class _BannerSliderWidgetState extends State<BannerSliderWidget> {
       "title2": "Clothes for baby",
       "description": "We help you to grow your",
       "image":
-          "https://static.vecteezy.com/system/resources/previews/047/394/332/non_2x/little-happy-child-kid-girl-in-casual-clothes-dancing-joyfully-isolated-on-a-transparent-background-free-png.png",
+          "https://parkofideas.com/kidz/demo2/wp-content/uploads/2016/10/clothes-0815085765.jpg",
     },
     {
       "title1": "Summer Collection",
       "title2": "Light & Breezy",
       "description": "Stay cool in the summer heat",
       "image":
-          "https://static.vecteezy.com/system/resources/previews/047/394/332/non_2x/little-happy-child-kid-girl-in-casual-clothes-dancing-joyfully-isolated-on-a-transparent-background-free-png.png",
-    },
-    {
-      "title1": "New Fashion Trends",
-      "title2": "Latest Styles",
-      "description": "Trendy outfits for all seasons",
-      "image":
-          "https://static.vecteezy.com/system/resources/previews/047/394/332/non_2x/little-happy-child-kid-girl-in-casual-clothes-dancing-joyfully-isolated-on-a-transparent-background-free-png.png",
+          "https://parkofideas.com/kidz/demo2/wp-content/uploads/2016/10/clothes-2104572517.jpg",
     },
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
         CarouselSlider(
           items:
@@ -44,53 +37,84 @@ class _BannerSliderWidgetState extends State<BannerSliderWidget> {
                 return Container(
                   width: double.infinity,
                   height: 200.0,
-                  padding: EdgeInsets.all(AppConstants.margin2),
                   decoration: BoxDecoration(
                     color: AppConstants.secondaryColor,
                     borderRadius: BorderRadius.all(AppConstants.smallRaduis),
                   ),
-                  child: Row(
+                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.5, 
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              banner["title1"]!,
-                              style: AppConstants.titleStyle,
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              AppConstants.smallRaduis,
                             ),
-                            Text(
-                              banner["title2"]!,
-                              style: TextStyle(
-                                fontSize: AppConstants.heading2
-                              ),
+                            image: DecorationImage(
+                              image: NetworkImage(banner["image"]!),
+                              fit: BoxFit.cover,
                             ),
-                            AppConstants.smallGap,
-                            Text(banner["description"]!),
-                            AppConstants.smallGap,
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                elevation: 0,
-                                backgroundColor: AppConstants.brownColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12)
-                                )
+                          ),
+                          child: Stack(
+                            children: [
+                              // Positioned text section
+                              Positioned(
+                                bottom:
+                                    20, // Bottom position for better spacing
+                                left: 16, // Padding for the left side
+                                right: 16, // Padding for the right side
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 10,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        banner["title1"]!,
+                                        style: AppConstants.titleStyle.copyWith(
+                                          color:
+                                              Colors
+                                                  .white, 
+                                          fontSize:
+                                              24, 
+                                          fontWeight:
+                                              FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ), 
+                                      Text(
+                                        banner["title2"]!,
+                                        style: AppConstants.titleStyle.copyWith(
+                                          color:
+                                              Colors
+                                                  .white, 
+                                          fontSize: 18, 
+                                          fontWeight:
+                                              FontWeight
+                                                  .normal, 
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
-                              onPressed: () {},
-                              child: Text(
-                                "Shop now",
-                                style: TextStyle(color: AppConstants.whiteColor),
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(
+                                    0.1,
+                                  ), // Increased opacity for better contrast
+                                  borderRadius: BorderRadius.all(
+                                    AppConstants.smallRaduis,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      Image.network(
-                        banner["image"]!,
-                        width: MediaQuery.of(context).size.width * 0.3, 
                       ),
                     ],
                   ),
@@ -115,12 +139,17 @@ class _BannerSliderWidgetState extends State<BannerSliderWidget> {
             },
           ),
         ),
-        const SizedBox(height: 8),
-        Row(
+        Positioned(
+          bottom: 10,
+          left: 0,
+          right: 0,
+          child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children:
               banners.asMap().entries.map((entry) {
                 return Container(
+                  alignment: Alignment.center,
                   width: _currentIndex == entry.key ? 12.0 : 8.0,
                   height: _currentIndex == entry.key ? 12.0 : 8.0,
                   margin: EdgeInsets.symmetric(horizontal: 4.0),
@@ -128,12 +157,13 @@ class _BannerSliderWidgetState extends State<BannerSliderWidget> {
                     shape: BoxShape.circle,
                     color:
                         _currentIndex == entry.key
-                            ? AppConstants.primaryColor
+                            ? AppConstants.whiteColor
                             : AppConstants.greyColor,
                   ),
                 );
               }).toList(),
-        ),
+          ),
+        )
       ],
     );
   }

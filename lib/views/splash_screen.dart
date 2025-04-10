@@ -68,9 +68,11 @@ class SplashScreen extends StatelessWidget {
                     btnTtitle: "Next", 
                     onPressed: (){
                       if(controller.currentIndex == slideList.length - 1){
-                         Navigator.pushReplacement(
+                        Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (_) => MainScreen()),
+                          MaterialPageRoute(
+                            builder: (context) => MainScreen(),
+                          ),
                         );
                       } else {
                         controller.pageController.nextPage(
@@ -84,9 +86,11 @@ class SplashScreen extends StatelessWidget {
                   TextButtonWidget(
                     btnTtitle: "Skip", 
                     onPressed: (){
-                      Navigator.pushReplacement(
+                      Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => MainScreen()),
+                        MaterialPageRoute(
+                          builder: (context) => MainScreen(),
+                        ),
                       );
                     }
                   )

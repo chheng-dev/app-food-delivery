@@ -19,10 +19,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       title: 'Food Delivery App',
       theme: ThemeData(
-        fontFamily: 'Lato',
+        fontFamily: 'Inter',
         primaryColor: AppConstants.primaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity
       ),
